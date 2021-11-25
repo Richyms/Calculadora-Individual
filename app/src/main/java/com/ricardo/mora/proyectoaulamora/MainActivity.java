@@ -116,6 +116,18 @@ public class MainActivity extends AppCompatActivity {
         onClickOperacionCapturaNumero1(miView);
     }
 
+    public void onClickNew(View miView){
+        operador="N";
+        onClickOperacionCapturaNumero1(miView);
+    }
+
+    public void onClickRaiz(View miView){
+        TextView tv = (TextView) findViewById(R.id.textView);
+        onClickOperacionCapturaNumero1(miView);
+        resultado =Math.sqrt(numero1);
+
+        tv.setText(resultado.toString());
+    }
 
     public void onClickIgual(View miView){
         TextView tv = (TextView) findViewById(R.id.textView);
@@ -127,21 +139,27 @@ public class MainActivity extends AppCompatActivity {
                 resultado = numero1 + numero2;
             }
             else
-            if (operador.equals("-")) {
-                resultado = numero1 - numero2;
-            }
-            else
-            if (operador.equals("*")) {
-                resultado = numero1 * numero2;
-            }
-            else
-            if (operador.equals("/")) {
-                resultado = numero1 / numero2;
-            }
-            else
-            if (operador.equals("area")) {
-                resultado = numero1 * numero1 * numero2;
-            }
+                if (operador.equals("-")) {
+                    resultado = numero1 - numero2;
+                }
+                else
+                    if (operador.equals("*")) {
+                    resultado = numero1 * numero2;
+                    }
+                    else
+                        if (operador.equals("/")) {
+                        resultado = numero1 / numero2;
+                        }
+                        else
+                            if (operador.equals("area")) {
+                                resultado = numero1 * numero1 * numero2;
+                            }
+                            else
+                                if (operador.equals("N")) {
+                                    numero1 = null;
+                                    numero2 = null;
+                                    resultado = null;
+                                }
             tv.setText(resultado.toString());
         }catch(NumberFormatException nfe){
             Toast.makeText( this, "Numero Incorrecto", Toast.LENGTH_LONG).show();
